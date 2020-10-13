@@ -1,6 +1,5 @@
 services:
   - docker
-  - mysql
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
@@ -22,7 +21,7 @@ before_script:
 
 script:
   - docker ps -a
-  - docker exec -it --privileged app /bin/sh -c "cd workspace && npm install && npm start"
+  - docker exec -it --privileged website /bin/sh -c "cd workspace && npm install && npm start"
 
 after_script:
   - docker-compose down
