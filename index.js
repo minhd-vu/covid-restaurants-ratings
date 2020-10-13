@@ -1,0 +1,25 @@
+const http = require('http');
+const port = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  const msg = 'Hello Node!\n'
+  res.end(msg);
+});
+
+server.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}/`);
+});
+
+var mysql = require('mysql');
+
+var db = mysql.createConnection({
+  host: "mysqldb",
+  user: "root",
+  password: "password"
+});
+
+db.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});

@@ -1,0 +1,23 @@
+{
+  "name": "covid-restaurant-ratings",
+  "version": "1.0.0",
+  "description": "Rate restaurants' COVID-19 prevention practices and stay safe in the middle of the pandemic.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minhd-vu/covid-restaurants-ratings.git"
+  },
+  "author": "Minh Vu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minhd-vu/covid-restaurants-ratings/issues"
+  },
+  "homepage": "https://github.com/minhd-vu/covid-restaurants-ratings#readme",
+  "dependencies": {
+    "http": "0.0.1-security",
+    "mysql": "^2.18.1"
+  }
+}

@@ -11,7 +11,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 # RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
 
 # [Optional] Uncomment if you want to install more global node packages
-# RUN sudo -u node npm install -g <your-package-list -here>
+RUN sudo -u node npm install -g http mysql
 
 # Note: You can use any Debian/Ubuntu based image you want. 
 # FROM mcr.microsoft.com/vscode/devcontainers/base:buster
@@ -44,5 +44,5 @@ ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
 CMD [ "sleep", "infinity" ]
 
 # [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends mysql-common default-mysql-client
