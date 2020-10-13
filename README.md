@@ -21,6 +21,7 @@ Rate restaurants' COVID-19 prevention practices and stay safe in the middle of t
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Docker](https://www.docker.com/)
+* [Travis CI](https://travis-ci.org/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -61,6 +62,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Project Link: [https://github.com/minhd-vu/covid-restaurant-ratings](https://github.com/minhd-vu/covid-restaurant-ratings)
+Travis CI Builds: [https://travis-ci.org/github/minhd-vu/covid-restaurants-ratings](https://travis-ci.org/github/minhd-vu/covid-restaurants-ratings)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
