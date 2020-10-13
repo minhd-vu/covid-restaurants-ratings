@@ -28,8 +28,8 @@ script:
   - docker ps -a
   - docker exec -it --privileged website /bin/sh -c "cd workspace && npm install"
   - ls -la
-  - sudo sh ../wait-for-db.sh
-  - docker exec -it --privileged website /bin/sh -c "npm start"
+  - sleep 90
+  - docker exec -it --privileged website /bin/sh -c "cd workdspace && npm start"
 
 after_script:
   - docker-compose down
