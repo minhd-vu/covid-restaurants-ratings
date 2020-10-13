@@ -1,4 +1,6 @@
-sudo: required
+os: linux
+dist: xenial
+langauge: C++
 
 services:
   - docker
@@ -23,7 +25,7 @@ before_script:
 
 script:
   - docker ps -a
-  - docker exec -it covid-restaurants-ratings_devcontainer_app /bin/sh -c "cd workspace && npm start"
+  - docker exec -it devcontainer_app /bin/sh -c "cd workspace && npm start"
 
 after_script:
   - docker-compose down
