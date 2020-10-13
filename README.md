@@ -42,8 +42,12 @@ This is an example of how to list things you need to use the software and how to
 ```sh
 git clone https://github.com/minhd-vu/covid-restaurant-ratings.git
 ```
-2. Click the green button on the bottom left -> Reopen in Container
-3. Start the server
+2. [Open in container](https://code.visualstudio.com/docs/remote/containers)
+3. Install dependencies
+```sh
+npm install
+```
+4. Start the server
 ```sh
 npm start
 ```
