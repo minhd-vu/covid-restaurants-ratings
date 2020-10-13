@@ -21,7 +21,7 @@ before_script:
 
 script:
   - docker ps -a
-  - docker exec -it devcontainer_app_1 /bin/sh -c "cd workspace && npm start"
+  - docker exec -it devcontainer_app_1 /bin/sh -c "cd workspace && npm install && npm start"
 
 after_script:
   - docker-compose down
