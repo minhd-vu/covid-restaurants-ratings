@@ -2,9 +2,9 @@ dist: focal
 os: linux
 language: ruby
 
-
 services:
   - docker
+  - mysql
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2

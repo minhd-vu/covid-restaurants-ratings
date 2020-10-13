@@ -49,7 +49,7 @@ services:
     volumes:
       - ../database:/database
     ports:
-      - "3308:3306"
+      - "3309:3306"
     networks: 
       - web
       
