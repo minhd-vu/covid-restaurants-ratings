@@ -26,13 +26,13 @@ app.listen(port, () => { console.log(`Server running on http://localhost:${port}
 
 var mysql = require('mysql');
 
-var db = mysql.createConnection({
+var mysqldb = mysql.createConnection({
   host: "mysqldb",
   user: "root",
   password: "password"
 });
 
-db.connect(function (err) {
+mysqldb.connect(function (err) {
   if (err) throw err;
-  console.log("Connected!");
+  console.log("Connected to MySQL database.");
 });

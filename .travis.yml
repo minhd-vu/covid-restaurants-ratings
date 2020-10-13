@@ -1,16 +1,3 @@
-# services:
-#     - docker
-
-# before_install:
-#     - sudo apt-get install -y qemu binfmt-support qemu-user-static
-#     - git clone https://github.com/computermouth/qemu-static-conf.git
-#     - sudo mkdir -p /lib/binfmt.d
-#     - sudo cp qemu-static-conf/*.conf /lib/binfmt.d/
-#     - sudo systemctl restart systemd-binfmt.service
-#     - cd .devcontainer
-#     - docker-compose up --build
-#     - docker exec -it /byteswap_devcontainer_bigendian_1 /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
-
 sudo: required
 
 services:
@@ -34,25 +21,9 @@ before_script:
   - cd .devcontainer
   - docker-compose up -d --build
 
-# script:
-#   - docker ps -a
-#   # - docker exec -it devcontainer_bigendian_1 /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh && cd workspace && make -B && ./server"
-#   - docker inspect devcontainer_bigendian_1
-#   - docker exec -it devcontainer_bigendian_1 /bin/sh -c "cd workspace && make -B && ./server"
-#   - docker exec -it devcontainer_littleendian_1 /bin/sh -c "cd workspace && make -B && ./client 172.18.0.4"
-
-# script:
-#   - docker exec -td devcontainer_bigendian_1 /bin/sh -c "cd workspace && make -B && ./server"
-#   - docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' devcontainer_bigendian_1
-#   - docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' devcontainer_littleendian_1
-#   - docker exec -it devcontainer_littleendian_1 /bin/sh -c "cd workspace && make -B && ./client `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' devcontainer_bigendian_1`"
-
-# script:
-#   - docker-compose exec devcontainer_bigendian_1 /bin/sh -c "cd workspace && make -B && ./server &"
-#   - docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' devcontainer_bigendian_1
-#   - docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' devcontainer_littleendian_1
-#   - docker-compose exec devcontainer_littleendian_1 /bin/sh -c "cd workspace && make -B && ./client `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' devcontainer_bigendian_1`"
-
+script:
+  - docker ps -a
+  - docker exec -it covid-restaurants-ratings_devcontainer_app /bin/sh -c "cd workspace && npm start"
 
 after_script:
   - docker-compose down
