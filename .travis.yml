@@ -26,6 +26,7 @@ before_script:
 
 script:
   - docker ps -a
+  - ../wait-for-db.sh
   - docker exec -it --privileged website /bin/sh -c "cd workspace && npm install && npm start"
 
 after_script:
