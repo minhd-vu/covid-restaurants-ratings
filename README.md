@@ -30,10 +30,11 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+* [Visual Studio Code](https://code.visualstudio.com/)
+    * Extensions:
+        * [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+        * [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+* [Docker Desktop](https://www.docker.com/)
 
 ### Installation
 
@@ -41,9 +42,10 @@ npm install npm@latest -g
 ```sh
 git clone https://github.com/minhd-vu/covid-restaurant-ratings.git
 ```
-2. Install NPM packages
+2. Click the green button on the bottom left -> Reopen in Container
+3. Start the server
 ```sh
-npm install
+npm start
 ```
 
 <!-- LICENSE -->
