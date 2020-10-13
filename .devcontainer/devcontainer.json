@@ -1,5 +1,5 @@
 {
-	"name": "Docker from Docker Compose",
+	"name": "Covid Restaurant Ratings",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
