@@ -1,16 +1,7 @@
 version: '3'
 
 services:
-  mysqldb:
-    image: mysql:5.6.44
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: db
-    volumes:
-      - ../database:/database
-    ports:
-      - "3308:3306"
-
+  # nodejs typescript development environment
   app:
     build: 
       context: .
@@ -29,8 +20,9 @@ services:
 
     # Overrides default command so things don't shut down after the process ends.
     entrypoint: /usr/local/share/docker-init.sh
-    # command: sleep infinity 
-    command: ["./wait-for-it.sh -t 0"]
+    command: sleep infinity 
+    # command: ["./wait-for-it.sh -t 0"]
+    depends_on: mysqldb
 
     # Uncomment the next four lines if you will use a ptrace-based debuggers like C++, Go, and Rust.
     # cap_add:
@@ -43,3 +35,14 @@ services:
 
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
     # (Adding the "ports" property to this file will not forward from a Codespace.)
+    
+  # MySQL database
+  mysqldb:
+    image: mysql:5.6.44
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: db
+    volumes:
+      - ../database:/database
+    ports:
+      - "3308:3306"
