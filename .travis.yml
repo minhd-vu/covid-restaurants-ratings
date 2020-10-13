@@ -1,7 +1,3 @@
-os: linux
-dist: xenial
-langauge: C++
-
 services:
   - docker
 
