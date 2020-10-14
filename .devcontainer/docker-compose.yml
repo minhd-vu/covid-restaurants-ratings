@@ -24,8 +24,6 @@ services:
     command: sleep infinity 
     depends_on:
       - mysqldb
-    networks: 
-      - web
 
     # Uncomment the next four lines if you will use a ptrace-based debuggers like C++, Go, and Rust.
     # cap_add:
@@ -50,9 +48,3 @@ services:
       - ../database:/database
     ports:
       - "3309:3306"
-    networks: 
-      - web
-      
-networks:
-  web:
-    driver: bridge

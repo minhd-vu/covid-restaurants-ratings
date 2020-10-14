@@ -14,9 +14,9 @@ app.get("/", function (request, response) {
 
 // You technically don't need this.
 
-// app.get("/login", function (request, response) {
-//   response.sendFile(__dirname + "/public/login.html");
-// });
+app.get("/login", function (request, response) {
+  response.sendFile(__dirname + "/public/login.html");
+});
 
 app.listen(port, () => { console.log(`Server running on http://localhost:${port}/`); });
 
