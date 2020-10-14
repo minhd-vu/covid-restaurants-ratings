@@ -23,6 +23,7 @@ Rate restaurants' COVID-19 prevention practices and stay safe in the middle of t
 * [Docker](https://www.docker.com/)
 * [Travis CI](https://travis-ci.org/)
 * [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+* [Node.js](https://nodejs.org/en/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
