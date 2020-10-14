@@ -62,6 +62,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Project Link: [https://github.com/minhd-vu/covid-restaurant-ratings](https://github.com/minhd-vu/covid-restaurant-ratings)
+
 Travis CI Builds: [https://travis-ci.org/github/minhd-vu/covid-restaurants-ratings](https://travis-ci.org/github/minhd-vu/covid-restaurants-ratings)
 
 <!-- ACKNOWLEDGEMENTS -->

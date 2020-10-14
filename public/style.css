@@ -29,8 +29,6 @@ body {
 
 /* -------------------------------------------------------------- */
 
-#login-header {}
-
 /* -------------------------------------------------------------- */
 
 /* Middle row of the main grid (contains the error message) */
@@ -68,7 +66,7 @@ body {
 /* Adjust the positioning of the login form inside the last row of the
   main grid */
 
-#login-form {
+.login-form {
   align-self: flex-start;
   display: grid;
   justify-items: center;
