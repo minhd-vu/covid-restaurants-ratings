@@ -40,16 +40,36 @@ app.get("/register", function (request, response) {
 
 app.post('/register-new-user', jsonParser, function (request, response) {
   // Create the users table if it does not exist.
-  db.query('CREATE TABLE IF NOT EXISTS users (user text, password text)', function (err, result) {
+  db.query('CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))', function (err, result) {
     if (err) throw err;
     console.log("Table users created.");
   });
 
   // Insert the username and password into the table.
-  db.query('INSERT INTO users (user, password) VALUES ("' + request.body.user + '","' + request.body.password + '")', function(err, result) {
-    if (err) throw err;
+
+  // var sql = "INSERT INTO users (user, password) " +
+  //   "SELECT * FROM (SELECT '" + request.body.user + "','" + request.body.password + "') AS tmp " +
+  //   "WHERE NOT EXISTS ( " +
+  //   "SELECT user FROM users WHERE user = '" + request.body.user + "' " +
+  //   ") LIMIT 1;";
+
+  var sql = 'INSERT INTO users (user, password) VALUES ("' + request.body.user + '","' + request.body.password + '")';
+
+  db.query(sql, function (err, result) {
+    if (err) {
+      if (err.errno == 1062) {
+        console.log("Username already exists.");
+        return response.redirect('/register');
+      }
+      else {
+        throw err;
+      }
+    }
+
     console.log("Inserted new user into database.");
   });
+
+
 });
 
 app.listen(port, () => { console.log(`Server running on http://localhost:${port}/`); });
