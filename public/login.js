@@ -9,4 +9,10 @@ login_button.addEventListener("click", (e) => {
     // Get the values input by the user in the form fields
     const username = login_form.username.value;
     const password = login_form.password.value;
+
+    // Send a request to the server
+    const request = new XMLHttpRequest();
+    request.open('post', '/login');
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+    request.send(JSON.stringify({ 'user': username, 'password': password }));
 })

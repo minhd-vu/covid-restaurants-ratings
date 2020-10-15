@@ -11,13 +11,15 @@ register_button.addEventListener("click", (e) => {
     const password = register_form.password.value;
     const confirm_password = register_form.confirm_password.value;
 
-    if (!username || !password || password != confirm_password)
-    {
-        alert("Invalid form input.");
+    if (!username || !password || !confirm_password) {
+        alert("Please fill in all fields.");
+    } else if (password != confirm_password) {
+        alert("Passwords do not match.");
     }
 
+    // Send a request to the server
     const request = new XMLHttpRequest();
-    request.open('post', '/register-new-user');
+    request.open('post', '/register');
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     request.send(JSON.stringify({ 'user': username, 'password': password }));
 })
