@@ -1,14 +1,16 @@
-const express = require('express');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
-const fs = require('fs');
-const port = process.env.PORT || 3000;
+var express = require('express');
+var app = express();
+var mysql = require('mysql');
+var bodyParser = require('body-parser');
+var fs = require('fs');
+var port = process.env.PORT || 3000;
 
-const jsonParser = bodyParser.json();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // ################ MYSQL DATABASE ################
 
-const db = mysql.createConnection({
+var db = mysql.createConnection({
   host: "mysqldb",
   user: "root",
   password: "password",
@@ -21,8 +23,6 @@ db.connect(function (err) {
 });
 
 // ################ EXPRESS SERVER ################
-
-const app = express();
 
 app.use(express.static('public'));
 
@@ -38,7 +38,7 @@ app.get("/register", (request, response) => {
   response.sendFile(__dirname + "/public/register.html");
 });
 
-app.post("/register", jsonParser, (request, response) => {
+app.post("/register", (request, response) => {
   // Create the users table if it does not exist.
   db.query("CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))", function (err, result) {
     if (err) throw err;
@@ -62,20 +62,20 @@ app.post("/register", jsonParser, (request, response) => {
   });
 });
 
-app.post("/login", jsonParser, (request, response) => {
+app.post("/login", (request, response) => {
   var sql = "SELECT * FROM users WHERE user = '" + request.body.user + "'";
   db.query(sql, (err, result) => {
     if (err) throw err;
     else if (result.length > 0) {
       if (result[0].password === request.body.password) {
-        
+
         // response.send({
         //   "code": 200,
         //   "success": "Successfully logged in.",
         // });
 
         console.log("Sucessfully logged in.");
-        return response.redirect("/register");
+        return response.redirect("/");
       } else {
         response.send({
           "code": 204,
@@ -90,11 +90,3 @@ app.post("/login", jsonParser, (request, response) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}/`);
 });
-
-// ############## NODE.JS WEBSERVER ###############
-
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200;
-// });
-
-// server.listen(port, () => { console.log(`Server running on http://localhost:${port}/`); });
