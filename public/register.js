@@ -22,4 +22,15 @@ register_button.addEventListener("click", (e) => {
     request.open('post', '/register');
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     request.send(JSON.stringify({ 'user': username, 'password': password }));
+
+    request.onreadystatechange = () => {
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+                // User successfully logged in
+                window.location = "/login";
+            } else {
+                // Failed authentication
+            }
+        }
+    }
 })

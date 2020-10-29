@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session')
 var app = express();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
@@ -26,6 +27,11 @@ db.connect(function (err) {
 
 app.use(express.static('public'));
 
+app.use(session({
+  secret: 'keyboard cat',
+  cookie: { secure: true }
+}))
+
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/public/index.html");
 });
@@ -51,14 +57,13 @@ app.post("/register", (request, response) => {
     if (err) {
       if (err.errno == 1062) {
         console.log("Username already exists.");
-        return response.redirect("/register");
-      }
-      else {
+      } else if (err) {
         throw err;
       }
+    } else {
+      response.status(200).send("User registered successfully.");
+      console.log("Inserted new user into database.");
     }
-
-    console.log("Inserted new user into database.");
   });
 });
 
@@ -68,19 +73,11 @@ app.post("/login", (request, response) => {
     if (err) throw err;
     else if (result.length > 0) {
       if (result[0].password === request.body.password) {
-
-        // response.send({
-        //   "code": 200,
-        //   "success": "Successfully logged in.",
-        // });
-
+        request.session.user_id = 0;
+        response.status(200).send("Succesfully logged in.");
         console.log("Sucessfully logged in.");
-        return response.redirect("/");
       } else {
-        response.send({
-          "code": 204,
-          "success": "Invalid username and password."
-        });
+        response.status(204).send("Invalid username and password.");
         console.log("Invalid username and password.");
       }
     }

@@ -45,4 +45,4 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends mysql-common default-mysql-client
 
 # [Optional] Uncomment if you want to install more global node packages
-RUN sudo -u node npm install -g http mysql express nodemon body-parser fs
+RUN sudo -u node npm install -g http mysql express nodemon body-parser fs express-session
