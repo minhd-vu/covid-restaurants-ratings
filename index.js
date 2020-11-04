@@ -36,6 +36,10 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/public/index.html");
 });
 
+app.get("/home", (request, response) => {
+  response.sendFile(__dirname + "/public/home/home.html");
+});
+
 app.get("/login", (request, response) => {
   response.sendFile(__dirname + "/public/login.html");
 });

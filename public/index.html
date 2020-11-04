@@ -6,8 +6,12 @@
     <meta charset="utf-8">
 
     <title>Covid Restaurant Ratings</title>
-
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    
+    <script src="./index.js" defer></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&libraries=places&callback=initAutocomplete"
+        async defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -16,7 +20,8 @@
     <a href="login">Login</a>
     <a href="register">Register</a>
 
-    <!-- <script src="js/scripts.js"></script> -->
+    <input id="pac-input" class="controls" type="text" placeholder="Enter A Place" />
+    <div id="map"></div>
 </body>
 
 </html>
