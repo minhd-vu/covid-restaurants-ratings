@@ -71,5 +71,7 @@ Travis CI Builds: [https://travis-ci.org/github/minhd-vu/covid-restaurants-ratin
 ## Acknowledgements
 
 * [Minh Vu](https://github.com/minhd-vu)
-* []()
-* []()
+* [Matthew Lee](https://github.com/Mattlee25)
+* [Awad Osman](https://github.com/aosmann7)
+* [Alex Gardner](https://github.com/Agardner329)
+* [Chan Chen](https://github.com/gchanchen)
