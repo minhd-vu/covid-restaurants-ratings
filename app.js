@@ -11,26 +11,44 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // ################ MYSQL DATABASE ################
 
-mysql://b153d9cfa74121:374a66f3@us-cdbr-east-02.cleardb.com/heroku_8c4d1456ec24adb?reconnect=true
-
+// Local Development
 /* var db = mysql.createConnection({
   host: "mysqldb",
   user: "root",
   password: "password",
   database: "db"
-}); */
-
-var db = mysql.createPool({
-  host: "us-cdbr-east-02.cleardb.com",
-  user: "b153d9cfa74121",
-  password: "374a66f3",
-  database: "heroku_8c4d1456ec24adb"
 });
 
 db.connect(function (err) {
   if (err) throw err;
   console.log("Connected to MySQL database.");
-});
+}); */
+
+// Heroku Deployment
+var db;
+function handleDisconnect() {
+  var db = mysql.createConnection({
+    host: "us-cdbr-east-02.cleardb.com",
+    user: "b153d9cfa74121",
+    password: "374a66f3",
+    database: "heroku_8c4d1456ec24adb"
+  });
+  db.connect(function onConnect(err) {
+    if (err) {
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 10000);
+    }
+  });
+  db.on('error', function onError(err) {
+    console.log('db error', err);
+    if (err.code == 'PROTOCOL_CONNECTION_LOST') {
+      handleDisconnect();
+    } else {
+      throw err;
+    }
+  });
+}
+handleDisconnect();
 
 // ################ EXPRESS SERVER ################
 
