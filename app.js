@@ -27,7 +27,7 @@ db.connect(function (err) {
 // Heroku Deployment
 var db;
 function handleDisconnect() {
-  var db = mysql.createConnection({
+  db = mysql.createConnection({
     host: "us-cdbr-east-02.cleardb.com",
     user: "b153d9cfa74121",
     password: "374a66f3",
