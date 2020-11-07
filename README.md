@@ -11,11 +11,14 @@
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
+* [Resources](#resources)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 Rate restaurants' COVID-19 prevention practices and stay safe in the middle of the pandemic.
+
+[https://covid-ratings.herokuapp.com/](https://covid-ratings.herokuapp.com/)
 
 ### Built With
 
@@ -75,3 +78,6 @@ Travis CI Builds: [https://travis-ci.org/github/minhd-vu/covid-restaurants-ratin
 * [Awad Osman](https://github.com/aosmann7)
 * [Alex Gardner](https://github.com/Agardner329)
 * [Chan Chen](https://github.com/gchanchen)
+
+## Resources
+* [Heroku Node.js + ClearDB](https://bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/)
