@@ -20,7 +20,7 @@ mysql://b153d9cfa74121:374a66f3@us-cdbr-east-02.cleardb.com/heroku_8c4d1456ec24a
   database: "db"
 }); */
 
-var db = mysql.createConnection({
+var db = mysql.createPool({
   host: "us-cdbr-east-02.cleardb.com",
   user: "b153d9cfa74121",
   password: "374a66f3",
