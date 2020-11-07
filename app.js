@@ -11,11 +11,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // ################ MYSQL DATABASE ################
 
-var db = mysql.createConnection({
+mysql://b153d9cfa74121:374a66f3@us-cdbr-east-02.cleardb.com/heroku_8c4d1456ec24adb?reconnect=true
+
+/* var db = mysql.createConnection({
   host: "mysqldb",
   user: "root",
   password: "password",
   database: "db"
+}); */
+
+var db = mysql.createConnection({
+  host: "us-cdbr-east-02.cleardb.com",
+  user: "b153d9cfa74121",
+  password: "374a66f3",
+  database: "heroku_8c4d1456ec24adb"
 });
 
 db.connect(function (err) {
