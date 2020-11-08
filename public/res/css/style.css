@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero {
+    padding: 0;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/public/res/images/salmon.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 100%;
+    height: 35rem;
+}
+
+.top-bar {
+    top: 0%;
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+    vertical-align: middle;
+}
+
+.top-col {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.btn-group {
+    height: 100px;
+    padding: 30px 40px;
+}
+
+.btns {
+    display: inline-block;
+    background: none;
+    border: none;
+    height: 40px;
+    width: 110px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.review-btn {
+    width: 120px;
+    padding: 0;
+}
+
+.review-btn:hover {
+    border-bottom: solid 2px #ffffff;
+}
+
+.login-btn {
+    width: 70px;
+    padding: 0;
+}
+
+.login-btn:hover {
+    border-bottom: solid 2px #ffffff;
+}
+
+.sign-up-btn {
+    border: solid 2px #ffffff;
+    border-radius: 3px;
+    margin-left: 20px;
+    transition: 0.1s;
+}
+
+.sign-up-btn:hover {
+    background-color: #ffffff;
+    color: #202020;
+    transition: 0.1s;
+}
+
+.logo-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 80px;
+    width: 330px;
+}
+
+.search-bar {
+    position: absolute;
+    left: 50%;
+    top: 34%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-piece {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+}
+
+input[type="text"] {
+    background: #fff;
+    width: 530px;
+    height: 35px;
+    border: none;
+    outline: none;
+    text-indent: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.input-part1 {
+    border-radius: 3px 0 0 3px;
+    right: -5px;
+}
+
+.input-part2 {
+    border-left: solid 1px #111111;
+}
+
+button[type="submit"] {
+    position: relative;
+    border-radius: 0 3px 3px 0;
+    left: -5px;
+    width: 50px;
+    height: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #24519e;
+    color: #fff;
+}
+
+.search-button {
+    transition: 0.4s;
+}
+
+.search-button img {
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+}
+
+.search-button:hover {
+    filter: brightness(80%);
+    transition: 0.8s;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    padding-top: 90px;
+    border-bottom: solid 1px #b1afaf;
+}
+
+.heading h2 {
+    font-family: 'Lobster', cursive;
+    color: #24519e;
+    font-size: 50px;
+}
+
+.heading img {
+    height: 65px;
+}
+
+.text-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.text-heading h3 {
+    font-family: 'Caveat', cursive;
+    color: #24519e;
+    text-transform: uppercase;
+}
+
+.about-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20%;
+    padding-bottom: 100px;
+    text-align: justify;
+    font-family: 'Raleway', sans-serif;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+.covid-resources {
+    background-color: #f5f5f5;
+}
+
+.col {
+    position: relative;
+    height: 140px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    margin: 40px 15px;
+    margin-bottom: 100px;
+    padding-top: 20px;
+}
+
+.resource-img {
+    position: absolute;
+    top: 10px;
+    height: 70px;
+    width: 110px;
+}
+
+.resource-link {
+    position: absolute;
+    font-family: 'Raleway', sans-serif;
+    padding: 4px 8px;
+    bottom: 10px;
+    border: solid 1px #111111;
+    color: #111111;
+    transition: 0.2s
+}
+
+.resource-link:hover {
+    text-decoration: none;
+    background-color: #24519e;
+    color: #fff;
+}
+
+footer {
+    background-color: #24519e;
+    height: 80px;
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
