@@ -6,7 +6,7 @@
 
 .hero {
     padding: 0;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/resources/images/salmon.jpg);
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/public/res/images/salmon.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -124,7 +124,6 @@ input[type="text"] {
     border-left: solid 1px #111111;
 }
 
-
 button[type="submit"] {
     position: relative;
     border-radius: 0 3px 3px 0;
@@ -138,7 +137,7 @@ button[type="submit"] {
     color: #fff;
 }
 
-.search-button{
+.search-button {
     transition: 0.4s;
 }
 
@@ -252,5 +251,16 @@ footer {
     position: absolute;
     top: 50%;
     width: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
     font-family: 'Raleway', sans-serif;
 }

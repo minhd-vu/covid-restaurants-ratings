@@ -2,9 +2,9 @@
   "name": "covid-restaurant-ratings",
   "version": "1.0.0",
   "description": "Rate restaurants' COVID-19 prevention practices and stay safe in the middle of the pandemic.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

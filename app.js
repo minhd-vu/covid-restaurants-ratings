@@ -33,11 +33,7 @@ app.use(session({
 }))
 
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/public/index.html");
-});
-
-app.get("/home", (request, response) => {
-  response.sendFile(__dirname + "/public/home/home.html");
+  response.sendFile(__dirname + "/public/home.html");
 });
 
 app.get("/login", (request, response) => {
