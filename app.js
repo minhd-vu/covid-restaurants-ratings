@@ -28,17 +28,15 @@ var db_config_heroku = {
 
 var db;
 function handleDisconnect() {
-  db = mysql.createConnection(db_config_heroku);
+  db = mysql.createConnection(db_config_docker);
   db.connect(function onConnect(err) {
     if (err) {
-      console.log("Error connecting to the mysql db:", err);
+      console.log(err);
       setTimeout(handleDisconnect, 10000);
-    } else {
-      console.log("Connected to MySQL database.");
     }
   });
   db.on("error", function onError(err) {
-    console.log("db error", err);
+    console.log(err);
     if (err.code == 'PROTOCOL_CONNECTION_LOST') {
       handleDisconnect();
     } else {
