@@ -264,3 +264,69 @@ footer {
     background-color: #fff;
     font-family: 'Raleway', sans-serif;
 }
+
+@media only screen and (max-width: 768) {
+    .col {
+        max-width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .search-bar {
+        width: 90%;
+    }
+
+    input[type="text"] {
+        width: 50%;
+        height: 35px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}   
+
+@media only screen and (max-width: 525px) {
+    .btns {
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .login-btn {
+        width: 37px;
+    }
+
+    .logo {
+        height: 55px;
+        width: 230px;
+    }
+
+    .heading {
+        padding-top: 40px;
+    }
+
+    .heading h2 {
+        font-size: 33px;
+    }
+    
+    .heading img {
+        height: 45px;
+    }
+    
+    .text-heading h3 {
+        font-size: 23px;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .col1 {
+        width: 33%;
+    }
+
+    .col2 {
+        width: 66%;
+    }
+}
