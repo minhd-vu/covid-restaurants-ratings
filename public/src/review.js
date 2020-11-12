@@ -9,9 +9,9 @@ review_button.addEventListener("click", (e) => {
     // Get the values input by the user in the form fields
     const location = review_form.location.value;
     const rating = review_form.rating.value;
-    const comments = review_form.comments.value;
+    const comment = review_form.comment.value;
 
-    console.log(location, rating, comments);
+    console.log(location, rating, comment);
 
     const request = {
         query: location,
@@ -27,7 +27,7 @@ review_button.addEventListener("click", (e) => {
                 const xhr = new XMLHttpRequest();
                 xhr.open('post', '/review');
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                xhr.send(JSON.stringify({ 'place_id': results[0].place_id, 'rating': rating, 'comments': comments }));
+                xhr.send(JSON.stringify({ 'place_id': results[0].place_id, 'user': 'Minh', 'rating': rating, 'comment': comment }));
             }
         }
     });

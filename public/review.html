@@ -16,8 +16,8 @@
     <h1>Write A Review</h1>
     <form id="review-form" class="review-form">
         <input type="text" id="autocomplete" name="location" placeholder="Location">
-        <input type="number" id="rating" name="rating" placeholder="Rating">
-        <input type="text" id="comments" name="comments" placeholder="Comments">
+        <input type="number" id="rating" name="rating" min="0" max="5" placeholder="Rating">
+        <input type="text" id="comment" name="comment" placeholder="Comment">
         <input type="submit" value="Submit" id="review-form-submit">
     </form>
 </body>

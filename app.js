@@ -1,24 +1,24 @@
-var express = require('express');
-var session = require('express-session')
-var app = express();
-var mysql = require('mysql');
-var bodyParser = require('body-parser');
-var fs = require('fs');
-var port = process.env.PORT || 3000;
+const express = require('express');
+const session = require('express-session')
+const app = express();
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // ################ MYSQL DATABASE ################
 
-var db_config_docker = {
+const db_config_docker = {
   host: 'mysqldb',
-    user: 'root',
-    password: 'password',
-    database: 'db'
+  user: 'root',
+  password: 'password',
+  database: 'db'
 };
 
-var db_config_heroku = {
+const db_config_heroku = {
   connectionLimit: 1,
   host: "us-cdbr-east-02.cleardb.com",
   user: "b153d9cfa74121",
@@ -26,7 +26,7 @@ var db_config_heroku = {
   database: "heroku_8c4d1456ec24adb"
 };
 
-var db;
+let db;
 function handleDisconnect() {
   db = mysql.createConnection(db_config_docker);
   db.connect(function onConnect(err) {
@@ -75,7 +75,7 @@ app.post("/register", (request, response) => {
   });
 
   // Insert the username and password into the table.
-  var sql = "INSERT INTO users (user, password) VALUES ('" + request.body.user + "','" + request.body.password + "')";
+  const sql = "INSERT INTO users (user, password) VALUES ('" + request.body.user + "','" + request.body.password + "')";
   db.query(sql, (err, result) => {
     if (err) {
       if (err.errno == 1062) {
@@ -91,7 +91,7 @@ app.post("/register", (request, response) => {
 });
 
 app.post("/login", (request, response) => {
-  var sql = "SELECT * FROM users WHERE user = '" + request.body.user + "'";
+  const sql = "SELECT * FROM users WHERE user = '" + request.body.user + "'";
   db.query(sql, (err, result) => {
     if (err) throw err;
     else if (result.length > 0) {
@@ -107,7 +107,7 @@ app.post("/login", (request, response) => {
   });
 });
 
-app.get("/search", (request, response) =>{
+app.get("/search", (request, response) => {
   response.sendFile(__dirname + "/public/search.html");
 });
 
@@ -117,6 +117,21 @@ app.get("/review", (request, response) => {
 
 app.post("/review", (request, response) => {
 
+  // Create the places table if it does not exist.
+  db.query("CREATE TABLE IF NOT EXISTS places (place_id VARCHAR(255), user VARCHAR(255), rating INT, comment TEXT)", (err, result) => {
+    if (err) throw err;
+    console.log("Table places created.");
+  });
+
+  // Insert the username and password into the table.
+  const sql = "INSERT INTO places (place_id, user, rating, comment) VALUES ('" + request.body.place_id + "','" + request.body.user + "','" + request.body.rating + "','" + request.body.comment + "')";
+  db.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    } else {
+      
+    }
+  });
 });
 
 app.listen(port, () => {
