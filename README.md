@@ -73,11 +73,11 @@ Travis CI Builds: [https://travis-ci.org/github/minhd-vu/covid-restaurants-ratin
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* [Minh Vu](https://github.com/minhd-vu)
+* [Chan Chen](https://github.com/gchanchen)
+* [Alex Gardner](https://github.com/Agardner329)
 * [Matthew Lee](https://github.com/Mattlee25)
 * [Awad Osman](https://github.com/aosmann7)
-* [Alex Gardner](https://github.com/Agardner329)
-* [Chan Chen](https://github.com/gchanchen)
+* [Minh Vu](https://github.com/minhd-vu)
 
 ## Resources
 * [Heroku Node.js + ClearDB](https://bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/)

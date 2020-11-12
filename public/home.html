@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="src/home.js" defer></script>
   <link rel="stylesheet" type="text/css" href="res/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -37,12 +38,10 @@
       <img class="logo" src="res/images/official_logo_nobackground.png" alt="Covid-Review" />
     </div>
     <form class="search-bar">
-      <input id="autocomplete" class="search-piece input-part1" onFocus="geolocate()" type="text" name=""
-        placeholder="Find">
-      <div id="map" style="visibility: hidden;"></div>
+      <input id="autocomplete" class="search-piece input-part1" onFocus="geolocate()" type="text" placeholder="Find">
       <input class="search-piece input-part2" type="text" name="" placeholder="Near me">
-      <button class="search-piece search-button" type="submit" name=""><img src="res/images/search-icon.png"
-          alt="search"></button>
+      <button id="search-button" class="search-piece search-button" type="submit" name="">
+        <img src="res/images/search-icon.png" alt="search"></button>
     </form>
   </section>
 
