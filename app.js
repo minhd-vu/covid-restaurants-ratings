@@ -107,6 +107,18 @@ app.post("/login", (request, response) => {
   });
 });
 
+app.get("/search", (request, response) =>{
+  response.sendFile(__dirname + "/public/search.html");
+});
+
+app.get("/review", (request, response) => {
+  response.sendFile(__dirname + "/public/review.html");
+});
+
+app.post("/review", (request, response) => {
+
+});
+
 app.listen(port, () => {
   console.log("Server running on http://localhost:%s/", port);
 });

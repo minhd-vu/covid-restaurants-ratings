@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write A Review</title>
+    <script defer src="src/autocomplete.js"></script>
+    <script defer src="src/review.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&callback=initAutocomplete&libraries=places&v=weekly"
+        defer></script>
+</head>
+
+<body>
+    <h1>Write A Review</h1>
+    <form id="review-form" class="review-form">
+        <input type="text" id="autocomplete" name="location" placeholder="Location">
+        <input type="number" id="rating" name="rating" placeholder="Rating">
+        <input type="text" id="comments" name="comments" placeholder="Comments">
+        <input type="submit" value="Submit" id="review-form-submit">
+    </form>
+</body>
+
+</html>
