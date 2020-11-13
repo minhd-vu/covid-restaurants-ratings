@@ -108,7 +108,12 @@ app.post("/login", (request, response) => {
 });
 
 app.get("/search", (request, response) => {
+  console.log(request.param('id'));
   response.sendFile(__dirname + "/public/search.html");
+});
+
+app.post("/search", (request, response) => {
+  
 });
 
 app.get("/review", (request, response) => {
@@ -123,13 +128,14 @@ app.post("/review", (request, response) => {
     console.log("Table places created.");
   });
 
-  // Insert the username and password into the table.
+  // Insert the review into the table.
   const sql = "INSERT INTO places (place_id, user, rating, comment) VALUES ('" + request.body.place_id + "','" + request.body.user + "','" + request.body.rating + "','" + request.body.comment + "')";
   db.query(sql, (err, result) => {
     if (err) {
       throw err;
     } else {
-      
+      response.status(200).send("Review entered succesfully.");
+      console.log("Inserted new review into database.");
     }
   });
 });

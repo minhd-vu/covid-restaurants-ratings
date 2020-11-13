@@ -5,20 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&libraries=places"
+        defer></script>
     <script defer src="src/search.js"></script>
 </head>
 
 <body>
-    <main id="main-holder">
-        <h1 id="search-header">Search</h1>
-
-        <form id="search-form" class="search-form">
-            <input type="text" name="username" id="username-field" class="search-form-field" placeholder="Username">
-            <input type="password" name="password" id="password-field" class="search-form-field" placeholder="Password">
-            <input type="submit" value="Login" id="search-form-submit">
-        </form>
-
-    </main>
+    <h1>Search</h1>
+    <p id="name"></p>
+    <p id="google-rating"></p>
+    <p id="covid-rating"></p>
+    <p id="address"></p>
+    <p id="phone-number"></p>
 </body>
 
 </html>

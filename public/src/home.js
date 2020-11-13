@@ -16,11 +16,7 @@ search_button.addEventListener("click", (e) => {
     service.findPlaceFromQuery(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             if (results.length > 0) {
-                // Send a request to the server
-                const xhr = new XMLHttpRequest();
-                xhr.open('get', '/search');
-                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-                xhr.send(JSON.stringify({ 'place_id': results[0].place_id }));
+                window.location = '/search?id=' + results[0].place_id;
             }
         }
     });
