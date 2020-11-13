@@ -28,6 +28,13 @@ service.getDetails(request, (place, status) => {
                 if (xhr.status == 200) {
                     const jsonResponse = JSON.parse(xhr.responseText);
                     console.log(jsonResponse);
+                    let reviews = jsonResponse.reviews;
+
+                    document.getElementById('comments').innerHTML = "";
+                    for (let i = 0; i < reviews.length; ++i) {
+                        document.getElementById('comments').innerHTML += "<p>User: " + reviews[i].user + " Rating: " + reviews[i].rating + " Comments: " + reviews[i].comment + "</p>";
+                    }
+
                 } else {
                 }
             }

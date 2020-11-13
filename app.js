@@ -19,7 +19,6 @@ const db_config_docker = {
 };
 
 const db_config_heroku = {
-  connectionLimit: 1,
   host: "us-cdbr-east-02.cleardb.com",
   user: "b153d9cfa74121",
   password: "374a66f3",
@@ -28,7 +27,7 @@ const db_config_heroku = {
 
 let db;
 function handleDisconnect() {
-  db = mysql.createConnection(db_config_docker);
+  db = mysql.createConnection(db_config_heroku);
   db.connect(function onConnect(err) {
     if (err) {
       console.log(err);
