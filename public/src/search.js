@@ -17,6 +17,19 @@ service.getDetails(request, (place, status) => {
         document.getElementById('address').innerHTML = place.formatted_address;
         document.getElementById('phone-number').innerHTML = place.formatted_phone_number;
 
-        
+        // Send a request to the server
+        const xhr = new XMLHttpRequest();
+        xhr.open('post', '/search');
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        xhr.send(JSON.stringify({ 'place_id': place_id }));
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    const jsonResponse = JSON.parse(req.responseText);
+                } else {
+                }
+            }
+        }
     }
 });

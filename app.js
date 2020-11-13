@@ -108,12 +108,21 @@ app.post("/login", (request, response) => {
 });
 
 app.get("/search", (request, response) => {
-  console.log(request.param('id'));
+  // console.log(request.param('id'));
   response.sendFile(__dirname + "/public/search.html");
 });
 
 app.post("/search", (request, response) => {
-  
+  const sql = "SELECT * FROM places WHERE place_id = '" + request.body.place_id + "'";
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    else if (result.length > 0) {
+      console.log(result);
+      response.status(200).json();
+    } else {
+      response.status(204).send("No covid reviews");
+    }
+  });
 });
 
 app.get("/review", (request, response) => {
