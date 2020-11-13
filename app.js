@@ -118,9 +118,22 @@ app.post("/search", (request, response) => {
     if (err) throw err;
     else if (result.length > 0) {
       console.log(result);
-      response.status(200).json();
+
+      let text = '{ "reviews" : [';
+      for (let i = 0; i < result.length; ++i) {
+        text += '{ "user":"' + result[i].user + '" , "rating":' + result[i].rating + ' , "comment":"' + result[i].comment + '" }'
+        if (i != result.length - 1) {
+          text += ",";
+        }
+      }
+      text += ' ]}';
+
+      let jsonRes = JSON.parse(text);
+      console.log(jsonRes);
+
+      response.status(200).json(jsonRes);
     } else {
-      response.status(204).send("No covid reviews");
+      response.status(204).send("No covid reviews.");
     }
   });
 });

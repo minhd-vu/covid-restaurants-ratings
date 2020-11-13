@@ -26,7 +26,8 @@ service.getDetails(request, (place, status) => {
         xhr.onreadystatechange = () => {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
-                    const jsonResponse = JSON.parse(req.responseText);
+                    const jsonResponse = JSON.parse(xhr.responseText);
+                    console.log(jsonResponse);
                 } else {
                 }
             }
