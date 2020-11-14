@@ -27,7 +27,6 @@ service.getDetails(request, (place, status) => {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
                     const jsonResponse = JSON.parse(xhr.responseText);
-                    console.log(jsonResponse);
                     let reviews = jsonResponse.reviews;
 
                     document.getElementById('comments').innerHTML = "";

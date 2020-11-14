@@ -11,14 +11,15 @@ login_button.addEventListener("click", (e) => {
     const password = login_form.password.value;
 
     // Send a request to the server
-    const request = new XMLHttpRequest();
-    request.open('post', '/login');
-    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-    request.send(JSON.stringify({ 'user': username, 'password': password }));
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.open('post', '/login');
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+    xhr.send(JSON.stringify({ 'user': username, 'password': password }));
 
-    request.onreadystatechange = () => {
-        if (request.readyState == 4) {
-            if (request.status == 200) {
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
                 // User successfully logged in
                 window.location = "/";
             } else {
