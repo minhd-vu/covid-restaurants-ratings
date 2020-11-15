@@ -4,7 +4,8 @@
   "description": "Rate restaurants' COVID-19 prevention practices and stay safe in the middle of the pandemic.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,12 +23,18 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
-    "express-sessions": "^1.0.6",
     "fs": "0.0.1-security",
     "http": "0.0.1-security",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^26.6.3",
+    "superagent": "^6.1.0",
+    "supertest": "^6.0.1"
   }
 }
