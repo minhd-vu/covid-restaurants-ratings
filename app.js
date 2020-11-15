@@ -106,8 +106,6 @@ app.post("/login", (request, response) => {
       if (result[0].password === request.body.password) {
         request.session.user = request.body.user;
 
-        console.log(request.sessionID + " " + request.session.user);
-
         response.status(200).send(request.body.user + " has logged in.");
         console.log(request.body.user + " has logged in.");
       } else {
@@ -153,7 +151,6 @@ app.get("/review", (request, response) => {
 });
 
 app.post("/review", (request, response) => {
-  console.log(request.sessionID + " " + request.session.user);
   if (request.session.user) {
     // Create the places table if it does not exist.
     db.query("CREATE TABLE IF NOT EXISTS places (place_id VARCHAR(255), user VARCHAR(255), rating INT, comment TEXT)", (err, result) => {
