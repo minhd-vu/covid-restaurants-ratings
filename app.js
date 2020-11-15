@@ -24,7 +24,7 @@ const db_config_heroku = {
 
 let db;
 function handleDisconnect() {
-  db = mysql.createConnection(db_config_heroku);
+  db = mysql.createConnection(db_config_docker);
   db.connect(function onConnect(err) {
     if (err) {
       console.log(err);
@@ -62,14 +62,6 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24
   }
 }));
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-  next();
-});
 
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/public/home.html");
