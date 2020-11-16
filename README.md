@@ -51,7 +51,6 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * [Visual Studio Code](https://code.visualstudio.com/)
     * Extensions:
         * [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
@@ -82,7 +81,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Live Webiste: [https://covid-ratings.herokuapp.com/](https://covid-ratings.herokuapp.com/)
+Live Website: [https://covid-ratings.herokuapp.com/](https://covid-ratings.herokuapp.com/)
 
 Project Link: [https://github.com/minhd-vu/covid-restaurant-ratings](https://github.com/minhd-vu/covid-restaurant-ratings)
 
