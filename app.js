@@ -137,4 +137,8 @@ app.post("/review", (request, response) => {
     }
 });
 
+app.get("/map", (request, response) => {
+    response.sendFile(__dirname + "/public/map.html");
+});
+
 module.exports = app;
