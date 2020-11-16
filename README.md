@@ -72,6 +72,10 @@ npm install
 ```sh
 npm start
 ```
+5. Manually testing the app
+```sh
+npm test
+```
 
 <!-- LICENSE -->
 ## License
