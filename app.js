@@ -65,16 +65,14 @@ app.post("/login", (request, response) => {
     const sql = "SELECT * FROM users WHERE user = '" + request.body.user + "'";
     db.query(sql, (err, result) => {
         if (err) throw err;
-        else if (result.length > 0) {
-            if (result[0].password === request.body.password) {
-                request.session.user = request.body.user;
+        else if (result.length > 0 && result[0].password === request.body.password) {
+            request.session.user = request.body.user;
 
-                response.status(200).send(request.body.user + " has logged in.");
-                console.log(request.body.user + " has logged in.");
-            } else {
-                response.status(204).send("Invalid username and password.");
-                console.log("Invalid username and password.");
-            }
+            response.status(200).send(request.body.user + " has logged in.");
+            console.log(request.body.user + " has logged in.");
+        } else {
+            response.status(204).send("Invalid username and password.");
+            console.log("Invalid username and password.");
         }
     });
 });
