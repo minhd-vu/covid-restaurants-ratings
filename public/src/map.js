@@ -5,6 +5,12 @@ function initMap() {
     "../res/images/maps/home.png";
   const imageGreen =
     "../res/images/maps/green.png";
+  const imageYellow =
+    "../res/images/maps/yellow.png";
+  const imageRed =
+    "../res/images/maps/red.png";
+  const imageBlue =
+    "../res/images/maps/blue.png";
   infoWindow = new google.maps.InfoWindow();
   
   map = new google.maps.Map(document.getElementById("map"), {
@@ -107,14 +113,17 @@ function initMap() {
         scaledSize: new google.maps.Size(25, 25),
       };
       // Create a marker for each place.
-      markers.push(
-        new google.maps.Marker({
+      
+      const marker = new google.maps.Marker({
           map,
-          //icon:imageGreen,
+          icon:imageBlue,
           title: place.name,
           position: place.geometry.location,
-        })
-      );
+        });
+      google.maps.event.addListener(marker, 'click', function (evt) { // the click event function is called with the "event" as an argument
+          window.location = '/search?id=' + place.place_id
+      });
+      markers.push(marker);
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
