@@ -40,7 +40,7 @@ app.get("/register", (request, response) => {
 
 app.post("/register", (request, response) => {
     // Create the users table if it does not exist.
-    db.query("CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))", function (err, result) {
+    db.query("CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))", (err, result) => {
         if (err) throw err;
         console.log("Table users created.");
     });
@@ -50,8 +50,9 @@ app.post("/register", (request, response) => {
     db.query(sql, (err, result) => {
         if (err) {
             if (err.errno == 1062) {
+                response.status(230).send("Username already exists.");
                 console.log("Username already exists.");
-            } else if (err) {
+            } else {
                 throw err;
             }
         } else {
@@ -64,16 +65,23 @@ app.post("/register", (request, response) => {
 app.post("/login", (request, response) => {
     const sql = "SELECT * FROM users WHERE user = '" + request.body.user + "'";
     db.query(sql, (err, result) => {
-        if (err) throw err;
-        else if (result.length > 0 && result[0].password === request.body.password) {
+        let message;
+        let status;
+
+        if (err) {
+            throw err;
+        } else if (result.length > 0 && result[0].password === request.body.password) {
             request.session.user = request.body.user;
 
-            response.status(200).send(request.body.user + " has logged in.");
-            console.log(request.body.user + " has logged in.");
+            status = 200;
+            message = request.body.user + " has logged in.";
         } else {
-            response.status(204).send("Invalid username and password.");
-            console.log("Invalid username and password.");
+            status = 230;
+            message = "Invalid username and password.";
         }
+
+        response.status(status).send(message);
+        console.log(message);
     });
 });
 
