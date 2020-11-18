@@ -2,8 +2,7 @@
   height: 100%;
 }
 
-html,
-body {
+html, body {
   height: calc(100vh - 60px);
   margin: 0;
   padding: 0;
@@ -28,17 +27,18 @@ body {
 }
 
 .heading {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 10%;
-    background-color: #24519e;;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 10%;
+  background-color: #24519e;
+  ;
 }
 
 .heading img {
-    height: 60px;
-    width: 260px;
+  height: 60px;
+  width: 260px;
 }
 
 .pac-card {
@@ -92,6 +92,7 @@ body {
 #target {
   width: 345px;
 }
+
 .custom-map-control-button {
   appearance: button;
   background-color: #fff;
@@ -105,6 +106,7 @@ body {
   font: 400 18px Roboto, Arial, sans-serif;
   overflow: hidden;
 }
+
 .custom-map-control-button:hover {
   background: #ebebeb;
 }

@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     max-height: 10%;
-    background-color: #24519e;;
+    background-color: #24519e;
 }
 
 .heading img {
@@ -41,7 +41,6 @@ form .container {
 .row {
     margin: 15px;
 }
-
 
 #login-header {
     font-size: 30px;
