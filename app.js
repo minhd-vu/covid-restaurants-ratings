@@ -40,27 +40,28 @@ app.get("/register", (request, response) => {
 
 app.post("/register", (request, response) => {
     db.getConnection((err, connection) => {
-    // Create the users table if it does not exist.
-    db.query("CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))", (err, result) => {
-        if (err) throw err;
         // Create the users table if it does not exist.
-        connection.query("CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))", function (err, result) {
+        db.query("CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))", (err, result) => {
             if (err) throw err;
+            // Create the users table if it does not exist.
+            connection.query("CREATE TABLE IF NOT EXISTS users (user VARCHAR(255) UNIQUE, password VARCHAR(255))", function (err, result) {
+                if (err) throw err;
 
-            // Insert the username and password into the table.
-            const sql = "INSERT INTO users (user, password) VALUES ('" + request.body.user + "','" + request.body.password + "')";
-            connection.query(sql, (err, result) => {
-        if (err) {
-            if (err.errno == 1062) {
-                response.status(230).send("Username already exists.");
-                console.log("Username already exists.");
-            } else {
-                throw err;
-            }
-        } else {
-            response.status(200).send("User registered successfully.");
-            console.log("Inserted new user into database.");
-        }
+                // Insert the username and password into the table.
+                const sql = "INSERT INTO users (user, password) VALUES ('" + request.body.user + "','" + request.body.password + "')";
+                connection.query(sql, (err, result) => {
+                    if (err) {
+                        if (err.errno == 1062) {
+                            response.status(230).send("Username already exists.");
+                            console.log("Username already exists.");
+                        } else {
+                            throw err;
+                        }
+                    } else {
+                        response.status(200).send("User registered successfully.");
+                        console.log("Inserted new user into database.");
+                    }
+                });
             });
         });
     });
@@ -76,19 +77,19 @@ app.post("/login", (request, response) => {
             connection.release();
             if (err) throw err;
             let message;
-        let status;
-if (result.length > 0 && result[0].password === request.body.password) {
-            request.session.user = request.body.user;
+            let status;
+            if (result.length > 0 && result[0].password === request.body.password) {
+                request.session.user = request.body.user;
 
-            status = 200;
-            message = request.body.user + " has logged in.";
-        } else {
-            status = 230;
-            message = "Invalid username and password.";
-        }
+                status = 200;
+                message = request.body.user + " has logged in.";
+            } else {
+                status = 230;
+                message = "Invalid username and password.";
+            }
 
-        response.status(status).send(message);
-        console.log(message);
+            response.status(status).send(message);
+            console.log(message);
         });
     });
 });
