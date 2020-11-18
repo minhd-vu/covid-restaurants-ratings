@@ -19,29 +19,27 @@ service.getDetails(request, (place, status) => {
 
         // Send a request to the server
         const xhr = new XMLHttpRequest();
-        xhr.open('post', '/search');
+        xhr.open('post', '/search', true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-        xhr.send(JSON.stringify({ 'place_id': place_id }));
 
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    const jsonResponse = JSON.parse(xhr.responseText);
-                    let reviews = jsonResponse.reviews;
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                let reviews = JSON.parse(xhr.responseText).reviews;
+                let total_rating = 0;
 
-                    let total_rating = 0;
-
-                    document.getElementById('comments').innerHTML = "";
-                    for (let i = 0; i < reviews.length; ++i) {
-                        total_rating += reviews[i].rating;
-                        document.getElementById('comments').innerHTML += "<p>User: " + reviews[i].user + " Rating: " + reviews[i].rating + " Comments: " + reviews[i].comment + "</p>";
-                    }
-
-                    document.getElementById('covid-rating').innerHTML = "Covid Rating: " + (total_rating / reviews.length).toFixed(1);
-
-                } else {
+                document.getElementById('comments').innerHTML = "";
+                for (let i = 0; i < reviews.length; ++i) {
+                    total_rating += reviews[i].rating;
+                    document.getElementById('comments').innerHTML += "<p>User: " + reviews[i].user + " Rating: " + reviews[i].rating + " Comments: " + reviews[i].comment + "</p>";
                 }
+
+                document.getElementById('covid-rating').innerHTML = "Covid Rating: " + (total_rating / reviews.length).toFixed(1);
+
+            } else {
+                alert(xhr.responseText);
             }
         }
+
+        xhr.send(JSON.stringify({ 'place_id': place_id }));
     }
 });

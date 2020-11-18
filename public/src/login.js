@@ -1,5 +1,6 @@
 const login_form = document.getElementById("login-form");
 const login_button = document.getElementById("login-form-submit");
+const authentication_alert = document.getElementById("authentication-alert");
 
 // When the login button is clicked, the following code is executed
 login_button.addEventListener("click", (e) => {
@@ -12,19 +13,21 @@ login_button.addEventListener("click", (e) => {
 
     // Send a request to the server
     const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-    xhr.open('post', '/login');
+    xhr.open('post', '/login', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     xhr.send(JSON.stringify({ 'user': username, 'password': password }));
 
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                // User successfully logged in
+    xhr.onload = () => {
+        switch (xhr.status) {
+            case 200:
                 window.location = "/";
-            } else {
-                // Failed authentication
-            }
+                break;
+            case 230:
+                authentication_alert.innerHTML = xhr.responseText;
+                authentication_alert.hidden = false;
+                break;
+            default:
+                break;
         }
     }
 })

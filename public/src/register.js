@@ -1,5 +1,6 @@
 const register_form = document.getElementById("register-form");
 const register_button = document.getElementById("register-form-submit");
+const authentication_alert = document.getElementById("authentication-alert");
 
 // When the register button is clicked, the following code is executed
 register_button.addEventListener("click", (e) => {
@@ -12,25 +13,29 @@ register_button.addEventListener("click", (e) => {
     const confirm_password = register_form.confirm_password.value;
 
     if (!username || !password || !confirm_password) {
-        alert("Please fill in all fields.");
+        authentication_alert.innerHTML = "Field(s) cannot be blank."
+        authentication_alert.hidden = false;
     } else if (password != confirm_password) {
-        alert("Passwords do not match.");
-    }
+        authentication_alert.innerHTML = "Passwords do not match."
+        authentication_alert.hidden = false;
+    } else {
+        // Send a POST request to the server
+        const xhr = new XMLHttpRequest();
+        xhr.open('post', '/register', true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        xhr.send(JSON.stringify({ 'user': username, 'password': password }));
 
-    // Send a request to the server
-    const request = new XMLHttpRequest();
-    request.open('post', '/register');
-    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-    request.send(JSON.stringify({ 'user': username, 'password': password }));
-
-    request.onreadystatechange = () => {
-        if (request.readyState == 4) {
-            if (request.status == 200) {
-                // User successfully logged in
-                window.location = "/login";
-            } else {
-                // Failed authentication
+        xhr.onload = () => {
+            switch (xhr.status) {
+                case 200:
+                    window.location = "/login";
+                    break;
+                case 230:
+                    authentication_alert.innerHTML = xhr.responseText;
+                    authentication_alert.hidden = false;
+                default:
+                    break;
             }
         }
     }
-})
+});

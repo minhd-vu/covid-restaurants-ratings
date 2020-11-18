@@ -23,23 +23,20 @@ review_button.addEventListener("click", (e) => {
             if (results.length > 0) {
                 // Send a request to the server
                 const xhr = new XMLHttpRequest();
-                xhr.withCredentials = true;
-                xhr.open('post', '/review');
+                xhr.open('post', '/review', true);
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 xhr.send(JSON.stringify({ 'place_id': results[0].place_id, 'rating': rating, 'comment': comment }));
 
-                xhr.onreadystatechange = () => {
-                    if (xhr.readyState == 4) {
-                        switch (xhr.status) {
-                            case 200:
-                                window.location = "/search?id=" + results[0].place_id;
-                                break;
-                            case 204:
-                                window.location = "/login";
-                                break;
-                            default:
-                                break;
-                        }
+                xhr.onload = () => {
+                    switch (xhr.status) {
+                        case 200:
+                            window.location = "/search?id=" + results[0].place_id;
+                            break;
+                        case 204:
+                            window.location = "/login";
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
