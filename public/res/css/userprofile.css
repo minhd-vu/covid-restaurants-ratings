@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 10%;
+    background-color: #24519e;;
+}
+
+.heading img {
+    height: 60px;
+    width: 260px;
+}
+
+.container {
+    margin: 0;
+    max-width: 100%;
+}
+
+.account {
+    padding: 40px;
+    width: 100%;
+    background-color: #e9e9e9;
+
+}
+
+/* User Profile Image */
+
+.photo {
+    height: 220px;
+    width: 220px;
+    border: solid 1px #afafaf;
+    border-radius: 25px;
+    float: right;
+}
+
+/* User Information */
+
+.user {
+    padding: 50px;
+}
+
+.icons {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    margin-right: 8px;
+}
+
+a {
+    margin-right: 7px;
+    color: #111111;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Update User */
+
+.update-profile {
+    padding: 50px;
+}
+
+.user-update {
+    border-left: solid 1px #b4b4b4;
+    padding: 15px;
+    height: 90%;
+}
+
+.update-section {
+    height: 50%;
+}
+
+/* User Activity */
+
+.user-activity {
+    padding: 50px 34%;
+}
+
+.header {
+    padding-bottom: 10px;
+    height: 35px;
+    color: #24519e;
+    border-bottom: solid 1px #cccccc;
+}
+
+.user-review {
+    padding: 5px 0;
+    border-bottom: solid 1px #cccccc;
+}
+
+.rating-p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+@media only screen and (max-width: 503px) {
+    .user-activity {
+        padding: 20px 10%;
+    }
+}
+
+@media only screen and (max-width: 484px) {
+    .photo {
+        float: none;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 417px) {
+    .user {
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+    .user-update {
+        border: 0;
+    }
+
+    .update-profile {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
