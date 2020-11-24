@@ -161,4 +161,8 @@ app.get("/map", (request, response) => {
     response.sendFile(__dirname + "/public/map.html");
 });
 
+app.get("/user/:username", (request, response) => {
+    response.sendFile(__dirname + "/public/userprofile.html");
+});
+
 module.exports = app;

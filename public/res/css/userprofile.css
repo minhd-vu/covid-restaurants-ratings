@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     max-height: 10%;
-    background-color: #24519e;;
+    background-color: #24519e;
 }
 
 .heading img {
@@ -30,7 +30,6 @@ body {
     padding: 40px;
     width: 100%;
     background-color: #e9e9e9;
-
 }
 
 /* User Profile Image */
@@ -122,11 +121,9 @@ a:hover {
         width: 100%;
         padding-bottom: 10px;
     }
-
     .user-update {
         border: 0;
     }
-
     .update-profile {
         padding-top: 10px;
         padding-bottom: 10px;
