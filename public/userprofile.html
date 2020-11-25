@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/res/css/userprofile.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&libraries=places"
+        defer></script>
     <script defer src="/src/userprofile.js"></script>
 
     <title>User Profile</title>
@@ -25,10 +28,10 @@
                 <img class="photo" src="/res/images/user_photo.png" alt="profile_image">
             </div>
             <div class="col user">
-                <h2 id="user-name">User Name</h2>
+                <h2 id="user-name">User Not Found</h2>
                 <p>City, State</p>
                 <div class="user-data">
-                    <a href=""><img class="icons" src="/res/images/review-logo.png" alt="review-logo"><span
+                    <a href=""><img class="icons" src="/res/images/review-logo.png" alt="review-logo"><span id="number-of-reviews"
                             class="number-of-reviews">0</span> Reviews</a>
                     <a href=""><img class="icons" src="/res/images/photos-logo.png" alt="photos-logo"><span
                             class="number-of-photos">0</span> Photos</a>
@@ -55,7 +58,8 @@
                 <h4>Recent Activity</h4>
             </div>
         </div>
-        <div class="user-review row">
+        <div id="reviews"></div>
+        <!-- <div class="user-review row">
             <div class="col-md-12">
                 <p>You wrote a review for <span>(restaurant name)</span></p>
             </div>
@@ -65,7 +69,7 @@
             <div class="col-md-12">
                 <p>This will hold what the user typed for the review.</p>
             </div>
-        </div>
+        </div> -->
     </section>
 
 </body>

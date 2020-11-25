@@ -174,7 +174,7 @@ app.post("/user/:username", (request, response) => {
             connection.release();
             if (err) throw err;
             else if (result.length > 0) {
-                let json = '{ "reviews" : [';
+                let json = '{ "name":"' + request.params.username + '", "reviews": [';
                 for (let i = 0; i < result.length; ++i) {
                     json += '{ "place_id":"' + result[i].place_id + '" , "rating":' + result[i].rating + ' , "comment":"' + result[i].comment + '" }'
                     if (i != result.length - 1) {
