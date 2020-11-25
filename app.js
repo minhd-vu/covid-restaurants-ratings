@@ -118,7 +118,7 @@ app.post("/search", (request, response) => {
 
                 response.status(200).json(JSON.parse(json));
             } else {
-                response.status(204).send();
+                response.status(230).send("No Results");
             }
         });
     });
@@ -164,5 +164,32 @@ app.get("/map", (request, response) => {
 app.get("/user/:username", (request, response) => {
     response.sendFile(__dirname + "/public/userprofile.html");
 });
+
+app.post("/user/:username", (request, response) => {
+    const sql = "SELECT * FROM places WHERE user = '" + request.params.username + "'";
+    db.getConnection((err, connection) => {
+        if (err) throw err;
+
+        connection.query(sql, (err, result) => {
+            connection.release();
+            if (err) throw err;
+            else if (result.length > 0) {
+                let json = '{ "reviews" : [';
+                for (let i = 0; i < result.length; ++i) {
+                    json += '{ "place_id":"' + result[i].place_id + '" , "rating":' + result[i].rating + ' , "comment":"' + result[i].comment + '" }'
+                    if (i != result.length - 1) {
+                        json += ",";
+                    }
+                }
+                json += ' ]}';
+
+                response.status(200).json(JSON.parse(json));
+            } else {
+                response.status(230).send("No Results");
+            }
+        });
+    });
+});
+
 
 module.exports = app;
