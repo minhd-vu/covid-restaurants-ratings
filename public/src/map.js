@@ -126,12 +126,30 @@ function initMap() {
 
 			let infowindow = new google.maps.InfoWindow();
 			marker.addListener('mouseover', function () {
-				infowindow.open(map, marker);
-				infowindow.setContent("<div class='infowindow-container'>" +
-					"<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +
-					"'></img><div class='inner'><h4>" + place.name +
-					"</h4><p>Rating: " + place.rating + "</p><p>Total reviews: " + place.user_ratings_total + "</p></div></div>");
+				const xhr = new XMLHttpRequest();
+				xhr.open('post', '/search', true);
+				xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
+				xhr.onload = () => {
+					infowindow.open(map, marker);
+					if (xhr.status == 200) {
+						let reviews = JSON.parse(xhr.responseText).reviews;
+						let total_rating = 0;
+
+						for (let i = 0; i < reviews.length; ++i) {
+							total_rating += reviews[i].rating;
+						}
+
+						infowindow.setContent("<div class='infowindow-container'><div class='inner'><h4>" + place.name +
+							"</h4><p>Address: " + place.formatted_address + "</p><p>Covid Rating: " + (total_rating / reviews.length).toFixed(1) + "</p><p>Covid Reviews: " + reviews.length + "</p></div></div>");
+
+					} else {
+						infowindow.setContent("<div class='infowindow-container'><div class='inner'><h4>" + place.name +
+							"</h4><p>Address: " + place.formatted_address + "</p></div></div>");
+					}
+				}
+
+				xhr.send(JSON.stringify({ 'place_id': place.place_id }));
 			});
 			marker.addListener("mouseout", function () {
 				infowindow.close();
