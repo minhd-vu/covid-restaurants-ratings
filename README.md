@@ -1,4 +1,15 @@
-# Covid Restaurant Ratings
+<p align="center">
+  <h1 align="center">Covid Restaurant Ratings</h1>
+  <p align="center">
+    Developed by CS 321 Group 2
+    <br />
+    <a href="https://covid-ratings.herokuapp.com/">View Demo</a>
+    ·
+    <a href="https://github.com/minhd-vu/covid-restaurants-ratings/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/minhd-vu/covid-restaurants-ratings/issues">Request Feature</a>
+  </p>
+</p>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -75,6 +86,11 @@ npm start
 5. Manually testing the app
 ```sh
 npm test
+```
+6. Switch between the test database and live database in `db.js`
+```js
+const db = mysql.createPool(db_config_docker); // test database
+const db = mysql.createPool(db_config_heroku); // live database
 ```
 
 <!-- LICENSE -->
