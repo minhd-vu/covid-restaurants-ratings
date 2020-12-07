@@ -2,6 +2,7 @@
 
 const express = require('express');
 const session = require('express-session');
+const favicon = require('serve-favicon')
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -12,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(favicon(__dirname + '/public/res/images/favicon.ico'));
 
 app.use(session({
     secret: 'keyboard cat',
