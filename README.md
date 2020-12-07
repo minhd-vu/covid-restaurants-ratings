@@ -4,7 +4,7 @@
   <p align="center">
     Developed by CS 321 Group 2
     <br />
-    <a href="https://github.com/minhd-vu/covid-restaurants-ratings">View Demo</a>
+    <a href="https://covid-ratings.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/minhd-vu/covid-restaurants-ratings/issues">Report Bug</a>
     ·
