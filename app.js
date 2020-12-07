@@ -126,7 +126,7 @@ app.post("/search", (request, response) => {
 
 app.get("/review", (request, response) => {
     if (request.session.user) {
-        response.sendFile(__dirname + "/public/review.html");
+        response.sendFile(__dirname + "/public/writereview.html");
     }
     else {
         return response.redirect("/login");
