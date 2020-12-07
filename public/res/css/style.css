@@ -152,6 +152,27 @@ button[type="submit"] {
     transition: 0.8s;
 }
 
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-link {    
+    text-decoration: none;
+    color: #ffffff;
+    border: solid 1px #ffffff;
+    border-radius: 2px;
+    width: 70px;
+    text-align: center;
+}
+
+.map-link:hover {
+    color: #111111;
+    text-decoration: none;
+    background-color: #ffffff;
+}
+
 .heading {
     display: flex;
     justify-content: center;
