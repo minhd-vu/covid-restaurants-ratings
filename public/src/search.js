@@ -6,17 +6,31 @@ console.log(place_id);
 
 var request = {
     placeId: place_id,
-    fields: ['name', 'rating', 'formatted_address', 'formatted_phone_number']
+    fields: ['name', 'rating', 'formatted_address', 'formatted_phone_number','opening_hours','website','reviews','photos']
 };
 
 const service = new google.maps.places.PlacesService(document.createElement('div'));
+
 service.getDetails(request, (place, status) => {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
         document.getElementById('name').innerHTML = place.name;
         document.getElementById('google-rating').innerHTML = place.rating;
         document.getElementById('address').innerHTML = place.formatted_address;
         document.getElementById('phone-number').innerHTML = place.formatted_phone_number;
-
+        document.getElementById('opening-hours').innerHTML = place.opening_hours.weekday_text;
+        document.getElementById('url').innerHTML = place.website;
+        document.getElementById('reviews').innerHTML = place.reviews;
+        document.getElementById('reviews').innerHTML = place.photos;
+        
+        console.log("photos",place.photos)
+        console.log("reviews",place.reviews)
+        var t=place.opening_hours;
+        console.log("hi")
+        console.log("hours",place.opening_hours.weekday_text)
+        for(let i=0; i< place.opening_hours.length; i++){
+            t.push(place.opening_hours[i]);
+        }
+        console.log(t)
         // Send a request to the server
         const xhr = new XMLHttpRequest();
         xhr.open('post', '/search', true);
@@ -42,4 +56,5 @@ service.getDetails(request, (place, status) => {
 
         xhr.send(JSON.stringify({ 'place_id': place_id }));
     }
+    console.log("request",request);
 });
