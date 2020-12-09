@@ -1,16 +1,17 @@
 let map;
+let trafficLayer;
+const imageHome =
+		"../res/images/maps/home.png";
+const imageGreen =
+		"../res/images/maps/green.png";
+const imageYellow =
+		"../res/images/maps/yellow.png";
+const imageRed =
+		"../res/images/maps/red.png";
+const imageBlue =
+		"../res/images/maps/blue.png";
 
 function initMap() {
-	const imageHome =
-		"../res/images/maps/home.png";
-	const imageGreen =
-		"../res/images/maps/green.png";
-	const imageYellow =
-		"../res/images/maps/yellow.png";
-	const imageRed =
-		"../res/images/maps/red.png";
-	const imageBlue =
-		"../res/images/maps/blue.png";
 	infoWindow = new google.maps.InfoWindow();
 
 	map = new google.maps.Map(document.getElementById("map"), {
@@ -18,7 +19,9 @@ function initMap() {
 		mapTypeControl: false,
 		streetViewControl: false,
 		fullscreenControl: false,
+    mapId: 'a999fe22517b1abb'
 	});
+  trafficLayer = new google.maps.TrafficLayer();
 
 	service = new google.maps.places.PlacesService(map);
 
@@ -75,7 +78,7 @@ function initMap() {
 			map.setCenter(results[0].geometry.location);
 		}
 	});
-
+  
 	// Create the search box and link it to the UI element.
 	const input = document.getElementById("pac-input");
 	const searchBox = new google.maps.places.SearchBox(input);
@@ -167,6 +170,20 @@ function initMap() {
 		map.fitBounds(bounds);
 	});
 
+  var trafficBox = document.getElementById("trafficToggle");
+  trafficBox.textContent = "Show Traffic?";
+  
+  
+  map.controls[google.maps.ControlPosition.LEFT_CENTER].push(trafficBox);
+}
+
+function toggleTraffic(box) {
+  // If the checkbox is checked, show the map (or not)
+  if($(box).is(":checked")){
+    trafficLayer.setMap(map);
+  } else {
+    trafficLayer.setMap(null);
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

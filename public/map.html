@@ -6,7 +6,7 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&callback=initMap&libraries=places&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&callback=initMap&libraries=places&v=weekly&map_ids=a999fe22517b1abb"
     defer></script>
   <link rel="stylesheet" type="text/css" href="res/css/mapstyle.css" />
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
@@ -20,8 +20,13 @@
     <img src="res/images/official_logo_nobackground.png">
   </a>
 
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+  <input id="pac-input" class="controls" type="text" placeholder="Search" />
   <div id="map"></div>
+  
+  <label class="container"><div id="trafficText">Show Traffic?</div>
+    <input type="checkbox" onchange="toggleTraffic(this)">
+    <span class="checkmark"></span>
+  </label>
 </body>
 
 </html>
