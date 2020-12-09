@@ -75,3 +75,11 @@ input[type="submit"]:hover {
     border: solid 2px #4e4d4d;
     transition: 0.3s;
 }
+.footer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 10%;
+    background-color: #24519e;
+}

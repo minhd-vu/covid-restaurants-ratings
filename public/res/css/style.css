@@ -392,6 +392,14 @@ footer {
     color:#000!important;
     background-color:#f1f1f1!important;
 }
+.footer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 10%;
+    background-color: #24519e;
+}
 
 /* W3.CSS 4.14 November 2020 by Jan Egil and Borge Refsnes */
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
