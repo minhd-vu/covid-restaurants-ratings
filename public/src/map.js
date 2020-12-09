@@ -10,7 +10,9 @@ const imageRed =
 		"../res/images/maps/red.png";
 const imageBlue =
 		"../res/images/maps/blue.png";
-
+const green_thresh = 4;
+const yellow_thresh = 2.5;
+    
 function initMap() {
 	infoWindow = new google.maps.InfoWindow();
 
@@ -116,13 +118,46 @@ function initMap() {
 				scaledSize: new google.maps.Size(25, 25),
 			};
 			// Create a marker for each place.
-
-			const marker = new google.maps.Marker({
+      
+			var marker = new google.maps.Marker({
 				map,
 				icon: imageBlue,
 				title: place.name,
 				position: place.geometry.location,
 			});
+      
+      //Get the proper color icon by calculating the avg rating
+      const initxhr = new XMLHttpRequest();
+      initxhr.open('post', '/search', true);
+      initxhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+
+      initxhr.onload = () => {
+        if (initxhr.status == 200) {
+          let reviews = JSON.parse(initxhr.responseText).reviews;
+          if(reviews.length == 0){
+            marker.setIcon(imageBlue);
+          }else{
+            let rating = 0;
+
+            for (let i = 0; i < reviews.length; ++i) {
+              rating += reviews[i].rating;
+            }
+            rating = (rating / reviews.length);
+
+            if(rating >= green_thresh){
+              marker.setIcon(imageGreen);
+            } else if(rating >=yellow_thresh){
+              marker.setIcon(imageYellow);
+            }else{
+              marker.setIcon(imageRed);
+            }
+          }
+        } else {
+          marker.setIcon(imageBlue);
+        }
+      }
+      initxhr.send(JSON.stringify({ 'place_id': place.place_id }));
+      
 			google.maps.event.addListener(marker, 'click', function (evt) { // the click event function is called with the "event" as an argument
 				window.location = '/search?id=' + place.place_id
 			});
