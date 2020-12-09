@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="res/css/bootstrap.css">
     <link rel="stylesheet" href="res/css/mobster.css">
     <link rel="stylesheet" href="res/css/search.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <!-- load the plugin/script -->
+    <script src="src/jquery-google-reviews.js" defer></script>
+
+    <!-- load the css to display the reviews beautifully -->
+    <link href="res/css/jquery-google-reviews.css" rel="stylesheet">
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&libraries=places"
         defer></script>
@@ -20,6 +27,7 @@
 </head>
 
 <body>
+   
     
      <!-- Hero -->
      <nav class="navbar navbar-expand-lg navbar-light navbar-floating">
@@ -36,7 +44,6 @@
       </nav>
   <!-- Nav Bar -->
   <!-- Header -->
-  
 <main>
     <div class="page-section">
       <div class="container">
@@ -45,13 +52,34 @@
             <article class="blog-entry">
              
               <div class="post-title"><h1><p id="name"></p></h1></div>
-              <div class="entry-content">
-                <p id="google-rating"></p>
+              <button class="btns review-btn" onclick="window.location.href='review'">Write Review</button>
+              <div class="entry-content" style="padding:10px">
+                <table>
+                  <tr>
+                    <td>
+                     <b> <p>Rating: </p></b>
+                    </td>
+                    <td>
+                      <p id="google-rating"></p>
+                    </td>
+                  </tr>
+                </table>
+                <hr style="margin-top: 0px;">
+                <table>
+                  <tr>
+                    <td>
+                     <b> <p>Requirements: </p></b>
+                    </td>
+                    <td>
+                    
+                    </td>
+                  </tr>
+                </table>
+                  
+                <hr style="margin-top: 0px;">
                 <p id="covid-rating"></p>
-                <button class="btns review-btn" onclick="window.location.href='review'">Write Review</button>
-               
               </div>
-              <div id="google-reviews"></div>
+              <p id="google-reviews"></p>
              
             </article>
   
@@ -85,24 +113,37 @@
     </div>
   
   </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="src/google-places.js"></script>
-    
-        <script>
-            jQuery(document).ready(function( $ ) {
-               $("#google-reviews").googlePlaces({
-                    placeId: place_id
-                  , render: ['reviews']
-                  , min_rating: 4
-                  , max_rows:4
-               });
-            });
-        </script>
-
+  <p class="footer"> <img src="footer.png"class="center">&copy; 2020   All right reserved</p>
   <script src="src/jquery-3.5.1.min.js"></script>
-
-  <script src="src/bootstrap.bundle.min.js"></script>
   
+  <script>
+    $(document).ready(function() {
+
+      $("#google-reviews").googlePlaces({
+          placeId: place_id
+        , render: ['reviews','address','phone']
+        , min_rating: 4
+        , max_rows:5
+        , shorten_names: false
+        , schema:{
+              displayElement: "#schema"
+            , type: 'Hostel'
+            , beforeText: 'Google Users Have Rated'
+            , middleText: 'based on'
+            , afterText: 'ratings and reviews'
+            , image: 'https://via.placeholder.com/150'
+            , priceRange: '$$'
+          }
+        , address:{
+            displayElement: "#custom-address-id"
+          }
+          
+          
+      });
+
+    });
+  </script>
+
   <script src="vendor/owl-carousel/js/owl.carousel.min.js"></script>
   
   <script src="vendor/wow/wow.min.js"></script>
