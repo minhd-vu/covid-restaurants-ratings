@@ -1,16 +1,19 @@
 let map;
-
-function initMap() {
-	const imageHome =
+let trafficLayer;
+const imageHome =
 		"../res/images/maps/home.png";
-	const imageGreen =
+const imageGreen =
 		"../res/images/maps/green.png";
-	const imageYellow =
+const imageYellow =
 		"../res/images/maps/yellow.png";
-	const imageRed =
+const imageRed =
 		"../res/images/maps/red.png";
-	const imageBlue =
+const imageBlue =
 		"../res/images/maps/blue.png";
+const green_thresh = 4;
+const yellow_thresh = 2.5;
+    
+function initMap() {
 	infoWindow = new google.maps.InfoWindow();
 
 	map = new google.maps.Map(document.getElementById("map"), {
@@ -18,7 +21,9 @@ function initMap() {
 		mapTypeControl: false,
 		streetViewControl: false,
 		fullscreenControl: false,
+    mapId: 'a999fe22517b1abb'
 	});
+  trafficLayer = new google.maps.TrafficLayer();
 
 	service = new google.maps.places.PlacesService(map);
 
@@ -75,7 +80,7 @@ function initMap() {
 			map.setCenter(results[0].geometry.location);
 		}
 	});
-
+  
 	// Create the search box and link it to the UI element.
 	const input = document.getElementById("pac-input");
 	const searchBox = new google.maps.places.SearchBox(input);
@@ -113,13 +118,46 @@ function initMap() {
 				scaledSize: new google.maps.Size(25, 25),
 			};
 			// Create a marker for each place.
-
-			const marker = new google.maps.Marker({
+      
+			var marker = new google.maps.Marker({
 				map,
 				icon: imageBlue,
 				title: place.name,
 				position: place.geometry.location,
 			});
+      
+      //Get the proper color icon by calculating the avg rating
+      const initxhr = new XMLHttpRequest();
+      initxhr.open('post', '/search', true);
+      initxhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+
+      initxhr.onload = () => {
+        if (initxhr.status == 200) {
+          let reviews = JSON.parse(initxhr.responseText).reviews;
+          if(reviews.length == 0){
+            marker.setIcon(imageBlue);
+          }else{
+            let rating = 0;
+
+            for (let i = 0; i < reviews.length; ++i) {
+              rating += reviews[i].rating;
+            }
+            rating = (rating / reviews.length);
+
+            if(rating >= green_thresh){
+              marker.setIcon(imageGreen);
+            } else if(rating >=yellow_thresh){
+              marker.setIcon(imageYellow);
+            }else{
+              marker.setIcon(imageRed);
+            }
+          }
+        } else {
+          marker.setIcon(imageBlue);
+        }
+      }
+      initxhr.send(JSON.stringify({ 'place_id': place.place_id }));
+      
 			google.maps.event.addListener(marker, 'click', function (evt) { // the click event function is called with the "event" as an argument
 				window.location = '/search?id=' + place.place_id
 			});
@@ -167,6 +205,20 @@ function initMap() {
 		map.fitBounds(bounds);
 	});
 
+  var trafficBox = document.getElementById("trafficToggle");
+  trafficBox.textContent = "Show Traffic?";
+  
+  
+  map.controls[google.maps.ControlPosition.LEFT_CENTER].push(trafficBox);
+}
+
+function toggleTraffic(box) {
+  // If the checkbox is checked, show the map (or not)
+  if($(box).is(":checked")){
+    trafficLayer.setMap(map);
+  } else {
+    trafficLayer.setMap(null);
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
