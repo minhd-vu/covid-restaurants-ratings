@@ -2,147 +2,165 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="res/css/maicons.css">
-    <link rel="stylesheet" href="vendor/animate/animate.css">
-    <link rel="stylesheet" href="vendor/owl-carousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="res/css/bootstrap.css">
-    <link rel="stylesheet" href="res/css/mobster.css">
-    <link rel="stylesheet" href="res/css/search.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- load the plugin/script -->
-    <script src="src/jquery-google-reviews.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="res/css/maicons.css">
+  <link rel="stylesheet" href="vendor/animate/animate.css">
+  <link rel="stylesheet" href="vendor/owl-carousel/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="res/css/bootstrap.css">
+  <link rel="stylesheet" href="res/css/mobster.css">
+  <link rel="stylesheet" href="res/css/search.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- load the css to display the reviews beautifully -->
-    <link href="res/css/jquery-google-reviews.css" rel="stylesheet">
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&libraries=places"
-        defer></script>
-       
-    <script defer src="src/search.js"></script>
-    <title>Search</title>
+  <!-- load the plugin/script -->
+  <script src="src/jquery-google-reviews.js" defer></script>
+
+  <!-- load the css to display the reviews beautifully -->
+  <link href="res/css/jquery-google-reviews.css" rel="stylesheet">
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eTXkehQYkqfOyJD_W8HIzW9oMFbmUv0&libraries=places"
+    defer></script>
+
+  <script defer src="src/search.js"></script>
+  <title>Search</title>
 </head>
 
 <body>
-   
-    
-     <!-- Hero -->
-     <nav class="navbar navbar-expand-lg navbar-light navbar-floating">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <img src="logo.png" alt="" width="250">
-          </a>
-            <div class="ml-auto my-2 my-lg-0">
-               <a class="btn btn-primary rounded-pill"  href="map.html">Map</a>
-              <button class="btn btn-primary rounded-pill" onclick="window.location.href='login'">Login</button>
-              <button class="btn btn-primary rounded-pill" onclick="window.location.href='register'">Sign Up</button>
-            </div>
-          </div>
-      </nav>
+
+
+  <!-- Hero -->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-floating">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="logo.png" alt="" width="250">
+      </a>
+      <div class="ml-auto my-2 my-lg-0">
+        <a class="btn btn-primary rounded-pill" href="map.html">Map</a>
+        <button class="btn btn-primary rounded-pill" onclick="window.location.href='login'">Login</button>
+        <button class="btn btn-primary rounded-pill" onclick="window.location.href='register'">Sign Up</button>
+      </div>
+    </div>
+  </nav>
   <!-- Nav Bar -->
   <!-- Header -->
-<main>
+  <main>
     <div class="page-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 py-3">
             <article class="blog-entry">
-             
-              <div class="post-title"><h1><p id="name"></p></h1></div>
+
+              <div class="post-title">
+                <h1>
+                  <p id="name"></p>
+                </h1>
+              </div>
               <button class="btns review-btn" onclick="window.location.href='review'">Write Review</button>
               <div class="entry-content" style="padding:10px">
                 <table>
                   <tr>
                     <td>
-                     <b> <p>Rating: </p></b>
+                      <b>
+                        <p>Rating: </p>
+                      </b>
                     </td>
                     <td>
                       <p id="google-rating"></p>
                     </td>
                   </tr>
                 </table>
+                <table>
+                  <tr>
+                    <td>
+                      <b>
+                        <p id="covid-rating">Covid Rating</p>
+                      </b>
+                    </td>
+                  </tr>
+                </table>
                 <hr style="margin-top: 0px;">
                 <table>
                   <tr>
                     <td>
-                     <b> <p>Requirements: </p></b>
+                      <b>
+                        <p>Requirements: </p>
+                      </b>
                     </td>
                     <td>
-                    
+
                     </td>
                   </tr>
                 </table>
-                  
+
                 <hr style="margin-top: 0px;">
                 <p id="covid-rating"></p>
               </div>
+              <p id="covid-reviews"></p>
               <p id="google-reviews"></p>
-             
+
             </article>
-  
-          
-              
+
+
+
           </div>
           <!-- Sidebar -->
           <div class="col-lg-4 py-3">
             <div class="widget-wrap">
-             <button class="btn btn-primary rounded-pill">  Check In    </button>
+              <button class="btn btn-primary rounded-pill"> Check In </button>
             </div>
             <div class="widget-wrap">
-                <h3 class="widget-title">Business Information</h3>
-                <p id="address"></p>
-                <p id="phone-number"></p>
-                <p id="url"></p>
-              </div>
-    
-              <div class="widget-wrap">
-                <h3 class="widget-title">Hours of Operation</h3>
-                <p id="opening-hours"></p>
-              </div>
+              <h3 class="widget-title">Business Information</h3>
+              <p id="address"></p>
+              <p id="phone-number"></p>
+              <p id="url"></p>
+            </div>
+
+            <div class="widget-wrap">
+              <h3 class="widget-title">Hours of Operation</h3>
+              <p id="opening-hours"></p>
+            </div>
           </div> <!-- end sidebar -->
         </div>
       </div>
     </div>
-  
+
   </main>
-  <p class="footer"> <img src="footer.png"class="center">&copy; 2020   All right reserved</p>
+  <p class="footer"> <img src="footer.png" class="center">&copy; 2020 All right reserved</p>
   <script src="src/jquery-3.5.1.min.js"></script>
-  
+
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
       $("#google-reviews").googlePlaces({
-          placeId: place_id
-        , render: ['reviews','address','phone']
+        placeId: place_id
+        , render: ['reviews', 'address', 'phone']
         , min_rating: 4
-        , max_rows:5
+        , max_rows: 5
         , shorten_names: false
-        , schema:{
-              displayElement: "#schema"
-            , type: 'Hostel'
-            , beforeText: 'Google Users Have Rated'
-            , middleText: 'based on'
-            , afterText: 'ratings and reviews'
-            , image: 'https://via.placeholder.com/150'
-            , priceRange: '$$'
-          }
-        , address:{
-            displayElement: "#custom-address-id"
-          }
-          
-          
+        , schema: {
+          displayElement: "#schema"
+          , type: 'Hostel'
+          , beforeText: 'Google Users Have Rated'
+          , middleText: 'based on'
+          , afterText: 'ratings and reviews'
+          , image: 'https://via.placeholder.com/150'
+          , priceRange: '$$'
+        }
+        , address: {
+          displayElement: "#custom-address-id"
+        }
+
+
       });
 
     });
   </script>
 
   <script src="vendor/owl-carousel/js/owl.carousel.min.js"></script>
-  
+
   <script src="vendor/wow/wow.min.js"></script>
-  
+
   <script src="src/mobster.js"></script>
 </body>
 
