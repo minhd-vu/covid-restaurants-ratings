@@ -16,7 +16,7 @@ Thank you guys!
     // This is the easiest way to have default options.
     var settings = $.extend({
       // These are the defaults.
-      header: "<h3>Reviews</h3>",
+      header: "",
       footer: '',
       maxRows: 6,
       minRating: 4,
